@@ -1,0 +1,43 @@
+ version: "3.9"
+
+services:
+  crm-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: mycrmproject
+      POSTGRES_USER: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  crm-redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  crm-fullstack-app:
+    build: .
+    depends_on:
+      - crm-db
+      - crm-redis
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - PORT=${PORT}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GOOGLE_REDIRECT_URI=${GOOGLE_REDIRECT_URI}
+    # Command left empty so CMD from Dockerfile is used
+
+volumes:
+  db-data:
+  redis-data:
+

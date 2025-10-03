@@ -1,0 +1,75 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #333;
+  color: #fff;
+}
+
+.navbar-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-user img,
+.navbar-user .profile-initial {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  background: #555;
+  color: #fff;
+}
+
+.navbar-user .logout-btn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background: #f00;
+  color: #fff;
+}
+.notification-wrapper {
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+ 
